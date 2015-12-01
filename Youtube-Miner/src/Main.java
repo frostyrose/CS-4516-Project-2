@@ -3,11 +3,11 @@ import java.util.Random;
 
 public class Main {
 
-	public static void main(String[] args) {
+	//public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Hello World");
+		//System.out.println("Hello World");
 
-	}
+	//}
 	
 	public static String generatePrefix(){
 		Random rand = new Random();
