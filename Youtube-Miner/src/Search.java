@@ -27,6 +27,7 @@ import com.google.api.services.youtube.model.ResourceId;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
 import com.google.api.services.youtube.model.Thumbnail;
+import com.google.api.services.youtube.model.Video;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -169,6 +170,7 @@ public class Search {
 
             SearchResult singleVideo = iteratorSearchResults.next();
             ResourceId rId = singleVideo.getId();
+            //Video v = new Video();
 
             // Confirm that the result represents a video. Otherwise, the
             // item will not contain a video ID.
