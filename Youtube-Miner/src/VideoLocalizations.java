@@ -32,6 +32,7 @@ import com.google.common.collect.Lists;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -61,55 +62,47 @@ public class VideoLocalizations {
      *
      * @param args command line args (not used).
      */
+    
     public static void main(String[] args) {
+    	ArrayList<String> videoIds = new ArrayList<String>();
+    	
+    	videoIds.add("kYmUJVE6Vo0");
+    	videoIds.add("6as8ahAr1Uc");
+    	videoIds.add("FyASdjZE0R0");
+    	
+    	list(videoIds);
+    	
+    }
+    
+    public static void list(ArrayList<String> videoIds) {
+    	for(int i = 0; i < videoIds.size(); i++){
+    	
+    		// This OAuth 2.0 access scope allows for full read/write access to the authenticated user's account.
+    		List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube");
+    		
+    		try {
+    			// Authorize the request.
+    			Credential credential = Auth.authorize(scopes, "localizations");
 
-        // This OAuth 2.0 access scope allows for full read/write access to the
-        // authenticated user's account.
-        List<String> scopes = Lists.newArrayList("https://www.googleapis.com/auth/youtube");
-        //List<String> videos = Lists.newArrayList("");
-        try {
-            // Authorize the request.
-            Credential credential = Auth.authorize(scopes, "localizations");
-
-            // This object is used to make YouTube Data API requests.
-            youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential)
-                    .setApplicationName("youtube-cmdline-localizations-sample").build();
-
-//        	youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new HttpRequestInitializer(){
-//                public void initialize(HttpRequest request) throws IOException {
-//                }
-//            }).setApplicationName("cs-4516-mining-client").build();
-//        	
-            // Prompt the user to specify the action of the be achieved.
-            String actionString = getActionFromUser();
-            System.out.println("You chose " + actionString + ".");
-            //Map the user input to the enum values.
-            Action action = Action.valueOf(actionString.toUpperCase());
-
-            switch (action) {
-                case SET:
-                    setVideoLocalization(getId("video"), getDefaultLanguage(),
-                            getLanguage(), getMetadata("title"), getMetadata("description"));
-                    break;
-                case GET:
-                    getVideoLocalization(getId("video"), getLanguage());
-                    break;
-                case LIST:
-                    listVideoLocalizations(getId("video"));
-                    break;
-            }
-        } catch (GoogleJsonResponseException e) {
-            System.err.println("GoogleJsonResponseException code: " + e.getDetails().getCode()
+    			// This object is used to make YouTube Data API requests.
+    			youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, credential)
+                    	.setApplicationName("youtube-cmdline-localizations-sample").build();
+ 	
+    			//action string is always LIST
+    			listVideoLocalizations(videoIds.get(i));
+             
+    		} catch (GoogleJsonResponseException e) {
+    			System.err.println("GoogleJsonResponseException code: " + e.getDetails().getCode()
                     + " : " + e.getDetails().getMessage());
-            e.printStackTrace();
-
-        } catch (IOException e) {
-            System.err.println("IOException: " + e.getMessage());
-            e.printStackTrace();
-        } catch (Throwable t) {
-            System.err.println("Throwable: " + t.getMessage());
-            t.printStackTrace();
-        }
+    			e.printStackTrace();
+    		} catch (IOException e) {
+    			System.err.println("IOException: " + e.getMessage());
+    			e.printStackTrace();
+    		} catch (Throwable t) {
+    			System.err.println("Throwable: " + t.getMessage());
+    			t.printStackTrace();
+    		}
+    	}
     }
 
     /**

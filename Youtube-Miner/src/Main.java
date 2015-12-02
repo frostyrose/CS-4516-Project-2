@@ -1,15 +1,24 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 
 public class Main {
 
-	//public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//System.out.println("Hello World");
-
-	//}
+	public static void main(String[] args) {
+		VideoLocalizations videoLoc = new VideoLocalizations();
+		
+		//Generate a random prefix of length 5
+		String prefix = generatePrefix(5);
+		
+		//search for all videos with prefix
+		ArrayList<String> videoIds = new Search().prefixSearch(prefix);
+		
+		//Get video localizations of all videoIds found by search
+		videoLoc.list(videoIds);
+		return;
+	}
 	
-	public static String generatePrefix(){
+	public static String generatePrefix(int size){
 		Random rand = new Random();
 		
 		
@@ -18,9 +27,9 @@ public class Main {
 				'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}; //character set for possible characters in id
 		
 		
-		char[] prefix = new char[5];  //random prefix
+		char[] prefix = new char[size];  //random prefix
 		
-		for(int i = 0; i < 5; i++){ //fill random prefix
+		for(int i = 0; i < size; i++){ //fill random prefix
 			int randomIndex = rand.nextInt(64); // 0-9.
 			prefix[i] = charSet[randomIndex];
 		}
