@@ -24,6 +24,7 @@ import com.google.api.client.util.ArrayMap;
 //import com.google.api.services.samples.youtube.cmdline.Auth;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.Video;
+import com.google.api.services.youtube.model.VideoContentDetails;
 import com.google.api.services.youtube.model.VideoListResponse;
 import com.google.api.services.youtube.model.VideoLocalization;
 import com.google.common.collect.Lists;
@@ -216,7 +217,7 @@ public class VideoLocalizations {
     private static void listVideoLocalizations(String videoId) throws IOException {
         // Call the YouTube Data API's videos.list method to retrieve videos.
         VideoListResponse videoListResponse = youtube.videos().
-            list("snippet,localizations").setId(videoId).execute();
+            list("snippet,contentDetails").setId(videoId).execute();
 
         // Since the API request specified a unique video ID, the API
         // response should return exactly one video. If the response does
@@ -227,17 +228,20 @@ public class VideoLocalizations {
             return;
         }
         Video video = videoList.get(0);
-        Map<String, VideoLocalization> localizations = video.getLocalizations();
-
+        //Map<String, VideoLocalization> localizations = video.getLocalizations();
+        
+        VideoContentDetails videoDetails = video.getContentDetails();
+        
         // Print information from the API response.
         System.out.println("\n================== Video ==================\n");
         System.out.println("  - ID: " + video.getId());
-        for (String language : localizations.keySet()) {
-            System.out.println("  - Title(" + language + "): " +
-                localizations.get(language).getTitle());
-            System.out.println("  - Description(" + language + "): " +
-                localizations.get(language).getDescription());
-        }
+//        for (String language : localizations.keySet()) {
+//            System.out.println("  - Title(" + language + "): " +
+//                localizations.get(language).getTitle());
+//            System.out.println("  - Description(" + language + "): " +
+//                localizations.get(language).getDescription());
+//        }
+        System.out.println(videoDetails.toPrettyString());
         System.out.println("\n-------------------------------------------------------------\n");
     }
 
