@@ -4,6 +4,19 @@ import java.util.Random;
 
 public class Main {
 
+	private static Main instance = null;
+	
+	public static Main getInstance() {
+	      if(instance == null) {
+	         instance = new Main();
+	      }
+	      return instance;
+	   }
+	
+	public static int totalVideos = 0;
+	public ArrayList<Integer> continentCount = new ArrayList<Integer>();
+	
+
 	public static void main(String[] args) {
 		VideoLocalizations videoLoc = new VideoLocalizations();
 		
@@ -12,6 +25,9 @@ public class Main {
 		
 		//search for all videos with prefix
 		ArrayList<String> videoIds = new Search().prefixSearch(prefix);
+		
+		//add number of videos to total count
+		totalVideos += videoIds.size();
 		
 		//Get video localizations of all videoIds found by search
 		videoLoc.list(videoIds);

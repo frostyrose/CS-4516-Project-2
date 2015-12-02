@@ -70,11 +70,14 @@ public class VideoLocalizations {
     	videoIds.add("6as8ahAr1Uc");
     	videoIds.add("FyASdjZE0R0");
     	
-    	list(videoIds);
+    	//list(videoIds);
     	
     }
     
     public static void list(ArrayList<String> videoIds) {
+    	
+    	Main main = Main.getInstance();
+    	
     	for(int i = 0; i < videoIds.size(); i++){
     	
     		// This OAuth 2.0 access scope allows for full read/write access to the authenticated user's account.
