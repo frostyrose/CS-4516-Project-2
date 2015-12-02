@@ -33,6 +33,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -48,9 +49,7 @@ public class Search {
      * Define a global variable that identifies the name of a file that
      * contains the developer's API key.
      */
-    private static final String PROPERTIES_FILENAME = "youtube.properties";
-
-    private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
+    private static final long NUMBER_OF_VIDEOS_RETURNED = 50;
 
     /**
      * Define a global instance of a Youtube object, which will be used
@@ -64,20 +63,8 @@ public class Search {
      *
      * @param args command line args.
      */
-    public static void main(String[] args) {
-        // Read the developer key from the properties file.
-//        Properties properties = new Properties();
-//        try {
-//            InputStream in = Search.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
-//            properties.load(in);
-//
-//        } catch (IOException e) {
-//            System.err.println("There was an error reading " + PROPERTIES_FILENAME + ": " + e.getCause()
-//                    + " : " + e.getMessage());
-//            System.exit(1);
-//        }
-
-        try {
+    public ArrayList<String> prefixSearch(String prefix) {
+    	try {
             // This object is used to make YouTube Data API requests. The last
             // argument is required, but since we don't need anything
             // initialized when the HttpRequest is initialized, we override
@@ -86,16 +73,12 @@ public class Search {
                 public void initialize(HttpRequest request) throws IOException {
                 }
             }).setApplicationName("cs-4516-mining-client").build();
-//            youtube = new YouTube.Builder(Auth.HTTP_TRANSPORT, Auth.JSON_FACTORY, new HttpRequestInitializer() {
-//                public void initialize(HttpRequest request) throws IOException {
-//                }
-//            }).setApplicationName("youtube-cmdline-search-sample").build();
 
             // Prompt the user to enter a query term.
-            String queryTerm = getInputQuery();
+            String queryTerm = prefix;//getInputQuery();
 
             // Define the API request for retrieving search results.
-            YouTube.Search.List search = youtube.search().list("id,snippet");
+            YouTube.Search.List search = youtube.search().list("id");
 
             // Set your developer key from the Google Developers Console for
             // non-authenticated requests. See:
@@ -117,7 +100,7 @@ public class Search {
             SearchListResponse searchResponse = search.execute();
             List<SearchResult> searchResultList = searchResponse.getItems();
             if (searchResultList != null) {
-                prettyPrint(searchResultList.iterator(), queryTerm);
+                return prettyPrint(searchResultList.iterator(), queryTerm);
             }
         } catch (GoogleJsonResponseException e) {
             System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
@@ -127,6 +110,7 @@ public class Search {
         } catch (Throwable t) {
             t.printStackTrace();
         }
+		return null;
     }
 
     /*
@@ -155,7 +139,7 @@ public class Search {
      *
      * @param query Search query (String)
      */
-    private static void prettyPrint(Iterator<SearchResult> iteratorSearchResults, String query) {
+    private ArrayList<String> prettyPrint(Iterator<SearchResult> iteratorSearchResults, String query) {
 
         System.out.println("\n=============================================================");
         System.out.println(
@@ -165,7 +149,7 @@ public class Search {
         if (!iteratorSearchResults.hasNext()) {
             System.out.println(" There aren't any results for your query.");
         }
-
+        ArrayList<String> ids = new ArrayList<String>();
         while (iteratorSearchResults.hasNext()) {
 
             SearchResult singleVideo = iteratorSearchResults.next();
@@ -175,13 +159,14 @@ public class Search {
             // Confirm that the result represents a video. Otherwise, the
             // item will not contain a video ID.
             if (rId.getKind().equals("youtube#video")) {
-                Thumbnail thumbnail = singleVideo.getSnippet().getThumbnails().getDefault();
-
-                System.out.println(" Video Id" + rId.getVideoId());
-                System.out.println(" Title: " + singleVideo.getSnippet().getTitle());
-                System.out.println(" Thumbnail: " + thumbnail.getUrl());
-                System.out.println("\n-------------------------------------------------------------\n");
+                //Thumbnail thumbnail = singleVideo.getSnippet().getThumbnails().getDefault();
+                ids.add(rId.getVideoId());
+                System.out.println(" Video Id: " + rId.getVideoId());
+                //System.out.println(" Title: " + singleVideo.getSnippet().getTitle());
+                //System.out.println(" Thumbnail: " + thumbnail.getUrl());
+                //System.out.println("\n-------------------------------------------------------------\n");
             }
         }
+		return ids;
     }
 }
