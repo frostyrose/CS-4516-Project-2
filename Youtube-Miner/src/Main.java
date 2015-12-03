@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Main {
 
+	//Singleton
 	private static Main instance = null;
-	
 	public static Main getInstance() {
 	      if(instance == null) {
 	         instance = new Main();
@@ -14,7 +14,9 @@ public class Main {
 	   }
 	
 	public static int totalVideos = 0;
-	public ArrayList<Integer> continentCount = new ArrayList<Integer>();
+	//store counts for each continent
+	public static int[] continentValues = {0,0,0,0,0,0,0};
+	public static Catalog countryValues = new Catalog();
 	
 
 	public static void main(String[] args) {
@@ -31,6 +33,7 @@ public class Main {
 		
 		//Get video localizations of all videoIds found by search
 		videoLoc.list(videoIds);
+		
 		return;
 	}
 	

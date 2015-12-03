@@ -5,6 +5,7 @@ public class Catalog {
 	HashMap<String, Integer> regions = new HashMap(300);
 	
 	public void addval(String key){
+		
 		int valEdit;
 		if (regions.containsKey(key) == true){
 			valEdit = (int) regions.get(key);
@@ -21,4 +22,5 @@ public class Catalog {
 		}
 		return rtnval;
 	}
+
 }
