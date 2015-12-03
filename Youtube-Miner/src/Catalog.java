@@ -1,8 +1,7 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Catalog {
-	HashMap<String, Integer> regions = new HashMap(300);
+	HashMap<String, Integer> regions = new HashMap<String, Integer>();
 	
 	public void addval(String key){
 		

@@ -20,7 +20,7 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-		VideoLocalizations videoLoc = new VideoLocalizations();
+		ExtractContentDetails videoLoc = new ExtractContentDetails();
 		
 		//Generate a random prefix of length 5
 		String prefix = generatePrefix(5);
@@ -33,7 +33,7 @@ public class Main {
 		
 		//Get video localizations of all videoIds found by search
 		videoLoc.list(videoIds);
-		
+		CSVFileWriter.writeCsvFile("test.csv", continentValues, countryValues);
 		return;
 	}
 	
