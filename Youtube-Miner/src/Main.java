@@ -33,6 +33,42 @@ public class Main {
 		
 		//Get video localizations of all videoIds found by search
 		videoLoc.list(videoIds);
+		/*System.out.println(continentValues[0]);
+		System.out.println(continentValues[1]);
+		System.out.println(continentValues[2]);
+		System.out.println(continentValues[3]);
+		System.out.println(continentValues[4]);
+		System.out.println(continentValues[5]);
+		System.out.println(continentValues[6]);
+		*/
+		if(continentValues[0] > totalVideos)
+		{
+			continentValues[0] = totalVideos;
+		}
+		if(continentValues[1] > totalVideos)
+		{
+			continentValues[1] = totalVideos;
+		}
+		if(continentValues[2] > totalVideos)
+		{
+			continentValues[2] = totalVideos;
+		}
+		if(continentValues[3] > totalVideos)
+		{
+			continentValues[3] = totalVideos;
+		}
+		if(continentValues[4] > totalVideos)
+		{
+			continentValues[4] = totalVideos;
+		}
+		if(continentValues[5] > totalVideos)
+		{
+			continentValues[5] = totalVideos;
+		}
+		if(continentValues[6] > totalVideos)
+		{
+			continentValues[6] = totalVideos;
+		}
 		CSVFileWriter.writeCsvFile("test.csv", continentValues, countryValues);
 		return;
 	}
