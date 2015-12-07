@@ -195,7 +195,7 @@ public class ExtractContentDetails {
     			 country.equals("ZA") || country.equals("SH") || country.equals("SD") || country.equals("SZ") || 
     			 country.equals("TZ") || country.equals("TG") || country.equals("TN") || country.equals("UG") || 
     			 country.equals("CD") || country.equals("ZM") || country.equals("TZ") || country.equals("ZW") || 
-    			 country.equals("SS") || country.equals("CD")){
+    			 country.equals("SS") || country.equals("CD") || country.equals("EH")){
     		return 0;  //AFRICA
     	}else if(country.equals("AF") || country.equals("AM") || country.equals("AZ") || country.equals("BH") || 
     			 country.equals("BD") || country.equals("BT") || country.equals("BN") || country.equals("KH") || 
@@ -262,7 +262,7 @@ public class ExtractContentDetails {
     	String[] countries = {"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AR", "AS", "AT", "AU", "AW", "AX",
     			"AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BM", "BN", "BO", "BR", "BS", "BT", "BW", "BY",
     			"BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CX", "CY",
-    			"CZ", "DE", "DJ", "DK", "DM", "DZ", "EC", "EE", "EG", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR",
+    			"CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR",
     			"GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GT", "GU", "GW",
     			"GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IR", "IS", "IT", "JE", "JM", "JO",
     			"JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS",
@@ -297,7 +297,7 @@ public class ExtractContentDetails {
     	String[] countries = {"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AR", "AS", "AT", "AU", "AW", "AX",
     			"AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BM", "BN", "BO", "BR", "BS", "BT", "BW", "BY",
     			"BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CX", "CY",
-    			"CZ", "DE", "DJ", "DK", "DM", "DZ", "EC", "EE", "EG", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR",
+    			"CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR",
     			"GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GT", "GU", "GW",
     			"GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IR", "IS", "IT", "JE", "JM", "JO",
     			"JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS",

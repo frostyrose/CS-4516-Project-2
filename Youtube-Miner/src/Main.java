@@ -20,19 +20,22 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-		ExtractContentDetails videoLoc = new ExtractContentDetails();
+		//ExtractContentDetails videoLoc = new ExtractContentDetails();
+		VideoLocalizations videoLoc = new VideoLocalizations();
+		for(int i = 0; i < 3; i++){
+			//Generate a random prefix of length 5
+			String prefix = generatePrefix(5);
 		
-		//Generate a random prefix of length 5
-		String prefix = generatePrefix(5);
+			//search for all videos with prefix
+			ArrayList<String> videoIds = new Search().prefixSearch(prefix);
 		
-		//search for all videos with prefix
-		ArrayList<String> videoIds = new Search().prefixSearch(prefix);
+			//add number of videos to total count
+			totalVideos += videoIds.size();
 		
-		//add number of videos to total count
-		totalVideos += videoIds.size();
+			//Get video localizations of all videoIds found by search
+			videoLoc.list(videoIds);
+		}
 		
-		//Get video localizations of all videoIds found by search
-		videoLoc.list(videoIds);
 		CSVFileWriter.writeCsvFile("test.csv", continentValues, countryValues);
 		return;
 	}
