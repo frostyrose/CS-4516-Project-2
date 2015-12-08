@@ -22,7 +22,6 @@ public class CSVFileWriter {
             fileWriter.append(FILE_HEADER.toString());
             fileWriter.append(NEW_LINE);
             
-            int counter = 0;
             fileWriter.append("TOTAL_VIDEOS");
             fileWriter.append(DELIMITER);
             fileWriter.append(Integer.toString(Main.totalVideos));
@@ -60,7 +59,6 @@ public class CSVFileWriter {
                 fileWriter.append(DELIMITER);
                 fileWriter.append(Integer.toString(countryData.get(k)));
                 fileWriter.append(NEW_LINE);
-                counter++;
             }
 
             System.out.println("CSV file was Writen");

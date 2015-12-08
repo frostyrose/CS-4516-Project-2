@@ -20,8 +20,8 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-		//ExtractContentDetails videoLoc = new ExtractContentDetails();
-		VideoLocalizations videoLoc = new VideoLocalizations();
+		ExtractContentDetails videoLoc = new ExtractContentDetails();
+		//VideoLocalizations videoLoc = new VideoLocalizations();
 		for(int i = 0; i < 3; i++){
 			//Generate a random prefix of length 5
 			String prefix = generatePrefix(5);
@@ -37,7 +37,7 @@ public class Main {
 		}
 		
 
-		CSVFileWriter.writeCsvFile("test.csv", continentValues, countryValues);
+		CSVFileWriter.writeCsvFile("data.csv", continentValues, countryValues);
 		return;
 	}
 	
