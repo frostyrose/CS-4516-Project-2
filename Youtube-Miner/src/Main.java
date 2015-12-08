@@ -22,7 +22,8 @@ public class Main {
 	public static void main(String[] args) {
 		ExtractContentDetails videoLoc = new ExtractContentDetails();
 		//VideoLocalizations videoLoc = new VideoLocalizations();
-		for(int i = 0; i < 4; i++){
+
+		for(int i = 0; i < 5000; i++){
 			//Generate a random prefix of length 5
 			String prefix = generatePrefix(5);
 		
