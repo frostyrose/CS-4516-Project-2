@@ -155,13 +155,7 @@ public class ExtractContentDetails {
     				//if list exists and is empty, blocked in all regions
     				return;
     			}else{
-    				for( String s : allowed){
-    					//increment country
-    					main.countryValues.addval(s);
-    					
-    					//increment continent
-    					main.continentValues[getContinent(s)]++;
-    				}
+    				incrementList(allowed, main);
     			}
     		}else if(blocked != null){
     			if(blocked.isEmpty()){
@@ -172,6 +166,7 @@ public class ExtractContentDetails {
     		}
     	}
     }
+    
     
     
     /*
@@ -254,6 +249,40 @@ public class ExtractContentDetails {
     	}else{
     		System.out.println(country);
     		return 6;
+    	}
+    }
+    
+    public static void incrementList(List<String> allowed, Main main){
+    	String[] countries = {"AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AR", "AS", "AT", "AU", "AW", "AX",
+    			"AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BM", "BN", "BO", "BR", "BS", "BT", "BW", "BY",
+    			"BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CX", "CY",
+    			"CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR",
+    			"GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GT", "GU", "GW",
+    			"GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IR", "IS", "IT", "JE", "JM", "JO",
+    			"JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS",
+    			"LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS",
+    			"MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU",
+    			"NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RS",
+    			"RO", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "ST",
+    			"SV", "SY", "SZ", "TC", "TD", "TG", "TH", "TJ", "TK", "TM", "TN", "TO", "TR", "TT", "TV", "TW",
+    			"TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", 
+    			"ZA", "ZM", "ZW"};
+    	
+    	boolean[] continentIncremented = {false, false, false, false, false, false, false};
+    	
+    	
+    	for(int i = 0; i < countries.length; i++){
+    		if(allowed.contains(countries[i])){
+    			int continent = getContinent(countries[i]);
+        	
+    			main.countryValues.addval(countries[i]);
+        		
+    			//only increment continent for this video if that continent hasn't been incremented before
+    			if(continentIncremented[continent] == false){
+    				continentIncremented[continent] = true;
+    				main.continentValues[continent]++;
+    			}
+    		}
     	}
     }
     
