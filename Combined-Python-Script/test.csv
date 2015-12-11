@@ -1,0 +1,38 @@
+Data Center Location,latitude,longitude
+"Mountain View, Calfornia",-60,-60
+"Pleasanton, Calfornia",-50,-50
+"San Jose, California",-40,-40
+"Los Angeles, California",-30,-30
+"Pao Alto, California",-20,-20
+"Seattle, Washington",-10,-10
+"Portland, Oregon",0,0
+"The Dalles, Oregon",10,10
+"Chicago, Illinois",20,20
+"Atlanta, Georga",30,30
+"Reston, Virginia",40,40
+"Ashburn, Virginia",50,50
+"Virginia Beach, Virginia",60,60
+"Houston, Texas",70,70
+"Miami, Florida",80,80
+"Lenoir, North Carolina",90,90
+"Goose Creek, South Carolina",-60,60
+"Pryor, Oklahoma",-50,50
+"Council Bluffs, Iowa",-40,40
+"Toronto, Canada",-30,30
+"Berlin, Germany",-20,20
+"Frankfurt, Germany",-10,10
+"Munich, Germany",0,0
+"Zurich, Switzerland",10,-10
+"Groningen, Netherlands",20,-20
+"Mons, Belgium",30,-30
+"Eemshaven, Netherlands",40,-40
+"Paris, France",50,-50
+"London, England",60,-60
+"Dublin, Ireland",70,-70
+"Milan, Italy",80,-80
+"Moscow, Russia",90,-90
+"Sao Paolo, Braziil",10,120
+"Tokyo, Japan",40,120
+"Hong Kong, China",-10,120
+Beijing,-40,120
+Test,0,0
