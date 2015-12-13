@@ -24,13 +24,15 @@ def circlePlotter(lats,longs,datalist,win,latlong,dataCenter):
             if i<37:
                 #print 'Data Center ' + str(i) + ' - Black'
                 color = 'black'
+                c.setOutline('black')
             else:
                 #print 'Data Center ' + str(i) + ' - Purple'
-                color = 'purple'
+                color = 'magenta'
+                c.setOutline('black')
             i+=1
         else:
             color = indexColor(datalist[record])
-        c.setOutline('black')
+            c.setOutline('black')
         c.setFill(color)
         c.draw(win)
     return
